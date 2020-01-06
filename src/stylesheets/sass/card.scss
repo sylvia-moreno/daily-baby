@@ -1,0 +1,37 @@
+.daily-card {
+  position: relative;
+  background-color: #ffffff;
+  height: 450px;
+  margin: 15px 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.05);
+  border: solid 1px rgba(255, 103, 97, 0.14);
+  transition: all .5s;
+
+  &:first-child {
+    transform: translateY(30px);
+  }
+
+  &__date {
+    position: absolute;
+    color: #6c706e;
+    bottom: 20px;
+    left: 20px;
+    font-family: "Didact Gothic", sans-serif;
+
+    &--container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+      .numb {
+        font-size: 50px;
+      }
+      .month {
+        text-transform: uppercase;
+        font-size: 15px;
+      }
+    }
+  }
+}

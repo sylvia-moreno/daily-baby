@@ -1,0 +1,19 @@
+.avatar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    &-baby-pic {
+        border-radius: 50%;
+        border: 5px solid #fff;
+        width: 150px;
+        height: 150px;
+    }
+
+    &-name {
+        color: #fff;
+        font-weight: 500;
+        font-size: 18px;
+        padding: 20px 0;
+    
+    }
+}

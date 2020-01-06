@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="logo">
+    <img src="./images/logo_transparent.png" alt="logo daily baby" />
+  </div>
+  <div class="form form-login">
+    <form action="/login" method="post">
+      <p class="form-container">
+        <label class="label-container label-container--input">
+          <span>Username:</span>
+          <input type="text" name="username">
+        </label>
+      </p>
+
+      <p>
+        <label class="label-container label-container--input">
+          <span>Password:</span>
+          <input type="password" name="password">
+        </label>
+      </p>
+
+      {{#if errorMessage}}
+      <div class="error-message">{{errorMessage}}</div>
+      {{/if}}
+      <button type="submit" class="button button-login is-rounded">Se connecter avec mon email</button>
+     
+      <p class="text-center">OU</p>
+
+      <button type="submit" class="button button-login is-rounded">Se connecter avec GMAIL</button>
+    <a href="/signup"><p class="text-center">Inscrivez vous</p></a>
+
+    </form>
+  </div>
+</div>

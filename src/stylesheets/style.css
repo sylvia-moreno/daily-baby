@@ -1,0 +1,9 @@
+@import './sass/main.scss';
+@import './sass/bulma.scss';
+@import './sass/card.scss';
+@import './sass/wording.scss';
+@import './sass/form.scss';
+@import './sass/avatar.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap');
+

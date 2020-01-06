@@ -1,0 +1,43 @@
+<div class="container">
+
+ 
+  <div class="avatar">
+    <div class="avatar-baby-pic">
+      <img src="{{user.avatar}}" alt="user photo">
+    </div>
+    <div class="avatar-name">{{user.username}}</div>
+  </div>
+  
+
+  <ul>
+    {{#each posts}}
+    <li>
+      <p>
+        <a href="/posts/{{id}}">{{content}}</a>
+      </p>
+    </li>
+    {{else}}
+    no post
+    {{/each}}
+  </ul>
+
+  {{#unless user}}
+  <p>
+    <a href="/signup">Signup</a> or <a href="/login">Login</a>
+  </p>
+  {{else}}
+  <p>
+    <a href="/posts/new">New post</a> <a href="/logout">Logout</a>
+  </p>
+  {{/unless}}
+</div>
+
+<div class="columns is-desktop">
+  {{> dailyCard }}
+</div>
+
+<div class="column daily-card">Jour 1</div>
+<div class="column daily-card">Jour 2</div>
+<div class="column daily-card">Jour 3</div>
+<div class="column daily-card">Jour 4</div>
+</div>

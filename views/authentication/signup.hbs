@@ -1,0 +1,62 @@
+<div class="container">
+ <div class="logo">
+    <img src="./images/logo_transparent.png" alt="logo daily baby" />
+  </div>
+  <div class="form form-signup">
+    <form action="/signup" method="post" enctype="multipart/form-data">
+      <p class="form-container">
+        <label class="label-container label-container--input">
+          Username:
+          <input type="text" name="username">
+        </label>
+      </p>
+
+      <p class="form-container">
+        <label class="label-container label-container--input">
+          Email:
+          <input type="text" name="email">
+        </label>
+      </p>
+
+      <p class="form-container">
+        <label class="label-container label-container--input">
+          Password:
+          <input type="password" name="password">
+        </label>
+      </p>
+
+      <p class="form-container">
+        <label class="label-container label-container--input">
+          Photo:
+          <input type="file" name="photo">
+        </label>
+      </p>
+
+      <p class="form-container select">
+        <label class="label-container label-container--input">
+          <span>Vous êtes:</span> 
+          <select name="roles" id="roles">
+            <option value="parent">parent</option>
+            <option value="nurse">Assistante maternelle</option>
+          </select>
+        </label>
+      </p>
+
+
+
+      <p class="form-container">
+        <label class="label-container label-container--input">
+          Nom de l'enfant
+          <input type="text" name="baby" id="">
+        </label>
+      </p>
+
+
+      {{#if errorMessage}}
+      <div class="error-message">{{errorMessage}}</div>
+      {{/if}}
+      <button type="submit" class="button button-login is-rounded">Créer un compte</button>
+    <p class="text-center">Avez vous déjà un compte ? <a href="/login">Connectez vous</a></p>
+    </form>
+  </div>
+</div>
