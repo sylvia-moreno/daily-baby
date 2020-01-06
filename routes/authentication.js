@@ -76,15 +76,15 @@ router.get("/login", (req, res) => {
   console.log("req: ", req);
 });
 
-router.post('/login', passport.authenticate('local', {
+/*router.post('/login', passport.authenticate('local', {
   successRedirect : '/',
   failureRedirect : '/login',
   failureFlash : true
-}));
+}));*/
 
-/*r
+
 router.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err, theUser, failureDetails) => {
+  passport.authenticate("local", (err, user, failureDetails) => {
     if (err) {
       // Something went wrong authenticating user
       return next(err);
@@ -92,9 +92,9 @@ router.post("/login", (req, res, next) => {
 
     if (!user) {
       // Unauthorized, `failureDetails` contains the error messages from our logic in "LocalStrategy" {message: '…'}.
-      res.render("auth/login", { errorMessage: "Wrong password or username" });
+      res.render("authentication/login", { errorMessage: "Wrong password or username" });
       return;
-    }
+    } 
 
     // save user in session: req.user
     req.login(user, err => {
@@ -108,12 +108,12 @@ router.post("/login", (req, res, next) => {
     });
   })(req, res, next);
 });
-*/
+
 
 //LOGOUT
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/");
+  res.redirect("/signup");
 });
 
 // FORGOT PASSWORD

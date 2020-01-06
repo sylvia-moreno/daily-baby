@@ -2,18 +2,27 @@
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
+    flex-direction: column;
+    align-items: center;
     &-baby-pic {
         border-radius: 50%;
         border: 5px solid #fff;
         width: 150px;
         height: 150px;
+        position: relative;
+        overflow: hidden;
+        img {
+            position: absolute;
+        }
     }
 
     &-name {
         color: #fff;
-        font-weight: 500;
-        font-size: 18px;
-        padding: 20px 0;
-    
+        font-weight: 800;
+        font-size: 25px;
+        padding: 10px 20px 0;
+        &:first-letter {
+            text-transform: uppercase;
+        }
     }
 }

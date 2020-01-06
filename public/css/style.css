@@ -8087,14 +8087,22 @@ h1 {
 .avatar {
   display: flex;
   justify-content: center;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  flex-direction: column;
+  align-items: center; }
   .avatar-baby-pic {
     border-radius: 50%;
     border: 5px solid #fff;
     width: 150px;
-    height: 150px; }
+    height: 150px;
+    position: relative;
+    overflow: hidden; }
+    .avatar-baby-pic img {
+      position: absolute; }
   .avatar-name {
     color: #fff;
-    font-weight: 500;
-    font-size: 18px;
-    padding: 20px 0; }
+    font-weight: 800;
+    font-size: 25px;
+    padding: 10px 20px 0; }
+    .avatar-name:first-letter {
+      text-transform: uppercase; }
