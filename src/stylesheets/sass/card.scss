@@ -1,3 +1,12 @@
+.card-view--container {
+  display: flex;
+    overflow-y: scroll;
+}
+
+.card-view--wrapper {
+  display: flex;
+}
+
 .daily-card {
   position: relative;
   background-color: #ffffff;
@@ -7,9 +16,9 @@
   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.05);
   border: solid 1px rgba(255, 103, 97, 0.14);
   transition: all .5s;
-
+  width: 350px;
   &:first-child {
-    transform: translateY(30px);
+    // transform: translateX(30px);
   }
 
   &__date {

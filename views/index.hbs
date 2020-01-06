@@ -27,23 +27,24 @@
   </p>
   {{else}}
   <p>
-    <a href="/posts/new">New post</a> <a href="/logout">Logout</a>
+    <a href="/posts/new" onclick="openRemoteScreen(e)">New post</a> <a href="/logout">Logout</a>
   </p>
   {{/unless}}
 </div>
 
-<div class="columns is-desktop">
-  {{#each daysCalendar}}
-  <div class="column daily-card">
-    <div class="daily-card__date">
-      <div class="daily-card__date--container">
-        <span class="numb">7</span>
-        <span class="month">juin</span>
+<div class="card-view--container">
+  <div class="card-view--wrapper">
+    {{#each days}}
+    <div class="column daily-card">
+      <div class="daily-card__date">
+        <div class="daily-card__date--container">
+          <span class="numb">{{day}}</span>
+          <span class="month">{{month}}</span>
+        </div>
       </div>
+      <div class="daily-card__edit"><a href="/post/edit">éditer</a></div>
     </div>
+    {{/each}}
   </div>
-  {{/each}}
 </div>
-
-
 </div>

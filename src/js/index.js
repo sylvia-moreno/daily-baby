@@ -10,8 +10,11 @@ const isInViewport = (elem)  => {
     );
 };
 
-if(isInViewport(dailyCard)) {
+/*if(isInViewport(dailyCard)) {
     dailyCard.classList.add.apply('active');
-}
+}*/
 
+const openRemoteScreen = (e) => {
+    e.target.classList.add.apply('isRemoteScreenVisible');
+}
 console.log('index.js is running');
