@@ -1,5 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Montserrat:400,500,800&display=swap');
 $color_white: #fff;
+$FONT_MONTSERRAT:  'Montserrat', sans-serif !important;
 
 html,
 body {
@@ -8,11 +9,17 @@ body {
 }
 
 body {
-  font-family: "Open Sans", sans-serif !important;
+  font-family: 'Montserrat', sans-serif !important;
   background-color: #fff;
+  color:  #1d1d1d;
 }
 
 .wrapper {
+  height: auto;
+  min-height: calc(100vh);
+}
+
+.no-user-connected{
   height: auto;
   min-height: calc(100vh);
   background: rgb(94, 206, 211);
@@ -32,6 +39,32 @@ body {
     rgba(128, 112, 218, 1) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5eced3",endColorstr="#8070da",GradientType=1);
+}
+
+.private-page-wrapper {
+  .private-page-wrapper--top {
+    background: rgb(94, 206, 211);
+    background: -moz-linear-gradient(
+      180deg,
+      rgba(94, 206, 211, 1) 0%,
+      rgba(128, 112, 218, 1) 100%
+    );
+    background: -webkit-linear-gradient(
+      180deg,
+      rgba(94, 206, 211, 1) 0%,
+      rgba(128, 112, 218, 1) 100%
+    );
+    background: linear-gradient(
+      180deg,
+      rgba(94, 206, 211, 1) 0%,
+      rgba(128, 112, 218, 1) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5eced3",endColorstr="#8070da",GradientType=1);
+  }
+
+  .private-page-wrapper--bottom {
+    background: #fff;
+  }
 }
 
 a {

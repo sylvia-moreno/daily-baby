@@ -1,54 +1,67 @@
 <div class="container">
- <div class="logo">
+  <div class="logo">
     <img src="./images/logo_transparent.png" alt="logo daily baby" />
   </div>
-  <div class="form form-signup">
+  <div class="form form-signup" id="form">
     <form action="/signup" method="post" enctype="multipart/form-data">
-      <p class="form-container">
-        <label class="label-container label-container--input">
-          Username:
-          <input type="text" name="username">
-        </label>
+      <p class="control has-icons-left has-icons-right">
+        <input class="input" type="username" placeholder="Username">
+        <span class="icon is-small is-left">
+          <i class="far fa-user"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i class="fas fa-check"></i>
+        </span>
       </p>
 
-      <p class="form-container">
-        <label class="label-container label-container--input">
-          Email:
-          <input type="text" name="email">
-        </label>
+      <p class="control has-icons-left has-icons-right">
+        <input class="input" type="email" placeholder="Email">
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i class="fas fa-check"></i>
+        </span>
       </p>
 
-      <p class="form-container">
-        <label class="label-container label-container--input">
-          Password:
-          <input type="password" name="password">
-        </label>
+      <p class="control has-icons-left has-icons-right">
+        <input class="input" type="password" placeholder="Password">
+        <span class="icon is-small is-left">
+          <i class="fas fa-unlock"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i class="fas fa-check"></i>
+        </span>
       </p>
 
-      <p class="form-container">
-        <label class="label-container label-container--input">
-          Photo:
-          <input type="file" name="photo">
-        </label>
-      </p>
-
-      <p class="form-container select">
-        <label class="label-container label-container--input">
-          <span>Vous êtes:</span> 
-          <select name="roles" id="roles">
-            <option value="parent">parent</option>
-            <option value="nurse">Assistante maternelle</option>
-          </select>
-        </label>
+      <p class="control has-icons-left has-icons-right">
+        <input class="input" type="file" placeholder="Votre avatar">
+        <span class="icon is-small is-left">
+          <i class="fas fa-file-upload"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i class="fas fa-check"></i>
+        </span>
       </p>
 
 
+      <div class="select select-role">
+        <span>Vous êtes:</span>
+        <select name="role" id="role" type="role">
+          <option value="parent">Parent</option>
+          <option value="nurse">Assistante maternelle</option>
+        </select>
+      </div>
 
-      <p class="form-container">
-        <label class="label-container label-container--input">
-          Nom de l'enfant
-          <input type="text" name="baby" id="">
-        </label>
+
+      <p class="control has-icons-left has-icons-right">
+        <input class="input" type="babyname" placeholder="Nom de l'enfant">
+        <span class="icon is-small is-left">
+          <i class="fas fa-baby"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i class="fas fa-check"></i>
+        </span>
       </p>
 
 
@@ -56,7 +69,7 @@
       <div class="error-message">{{errorMessage}}</div>
       {{/if}}
       <button type="submit" class="button button-login is-rounded">Créer un compte</button>
-    <p class="text-center">Avez vous déjà un compte ? <a href="/login">Connectez vous</a></p>
+      <p class="text-center">Avez vous déjà un compte ? <a href="/login">Connectez vous</a></p>
     </form>
   </div>
 </div>

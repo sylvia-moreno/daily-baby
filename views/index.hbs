@@ -1,13 +1,12 @@
-<div class="container">
+<div class="index">
 
-
+  {{#user}}
   <div class="avatar">
     <div class="avatar-baby-pic">
       <img src="{{user.avatar}}" alt="user photo">
     </div>
     <div class="avatar-name">{{user.username}}</div>
   </div>
-
 
   <ul>
     {{#each posts}}
@@ -20,11 +19,10 @@
     no post
     {{/each}}
   </ul>
+  {{/user}}
 
   {{#unless user}}
-  <p>
-    <a href="/signup">Signup</a> or <a href="/login">Login</a>
-  </p>
+    {{> noconnected}}
   {{else}}
   <p>
     <a href="/posts/new" onclick="openRemoteScreen(e)">New post</a> <a href="/logout">Logout</a>
@@ -32,6 +30,7 @@
   {{/unless}}
 </div>
 
+  {{#user}}
 <div class="card-view--container">
   <div class="card-view--wrapper">
     {{#each days}}
@@ -47,4 +46,5 @@
     {{/each}}
   </div>
 </div>
+  {{/user}}
 </div>

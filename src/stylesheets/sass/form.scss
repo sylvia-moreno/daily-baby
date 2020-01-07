@@ -1,4 +1,9 @@
-.form {
+#form {
+  input,
+  select {
+    font-family: $FONT_MONTSERRAT;
+  }
+
   display: flex;
   justify-content: center;
   form {
@@ -13,7 +18,7 @@
   .label-container {
     display: flex;
     flex-direction: column;
-    color: #fff;
+    color: #1d1d1d;
     font-size: 14px;
     input {
       border: 0px;
@@ -23,6 +28,28 @@
       background: none;
     }
   }
+
+  .control {
+    margin-bottom: 20px;
+    input {
+      border: none;
+      border-bottom: 1px solid lightgray;
+      border-radius: 0;
+      box-shadow: none;
+      &::placeholder {
+        font-family: "Montserrat", sans-serif !important;
+      }
+    }
+  }
+
+  .select-role {
+    margin-bottom: 40px;
+    select {
+      border-color: lightgray;
+      color: #1d1d1d;
+      font-family: inherit;
+    }
+  }
 }
 
 .button {
@@ -30,11 +57,24 @@
   font-family: inherit;
   &-login {
     background-color: rgba(94, 206, 211, 1);
-    color: $color_white;
+    color: #fff;
     border: none;
   }
 }
 
+.btn-login {
+  &--home {
+    color: white;
+    background: black;
+    border: none;
+    font-weight: 800;
+    transition: transform 200ms ease;
+    &:hover {
+      transform: translateY(-2px);
+      color: #fff;
+    }
+  }
+}
 .select {
   display: inline-grid !important;
   select {

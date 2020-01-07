@@ -29,6 +29,7 @@ router.get("/", (req, res, next) => {
     { locale: frLocale }
   );
 
+  
   let daysData = [];
   daysInterval.reduce((a, d) => {
     daysData.push({

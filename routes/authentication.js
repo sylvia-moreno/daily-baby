@@ -17,9 +17,9 @@ router.get("/signup", (req, res) => {
 router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
-  const avatar = req.file.url ? req.file.url : "";
+  const avatar = req.file ? req.file.url : '';
   const email = req.body.email;
-  const roles = req.body.roles;
+  const role = req.body.role;
 
   // 1. Check username and password are not empty
   if (username === "" || password === "") {
@@ -32,7 +32,7 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
   User.findOne({ username })
     .then(user => {
       // 2. Check user does not already exist
-      if (user) {
+      if (user !== null) {
         res.render("authentication/signup", {
           errorMessage: "The username already exists"
         });
@@ -52,7 +52,7 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
         password: hashPass,
         avatar,
         email,
-        roles
+        role
       });
 
       newUser
@@ -92,7 +92,7 @@ router.post("/login", (req, res, next) => {
 
     if (!user) {
       // Unauthorized, `failureDetails` contains the error messages from our logic in "LocalStrategy" {message: '…'}.
-      res.render("authentication/login", { errorMessage: "Wrong password or username" });
+      res.render("authentication/login", { errorMessage: "Wrong password or email" });
       return;
     } 
 
