@@ -9,17 +9,29 @@ const bcryptSalt = 10;
 
 const uploadCloud = require("../config/cloudinary.js");
 
+const nodemailer = require("nodemailer");
+
+let emailCorrespondant;
+let username;
+
 // SIGNUP
 router.get("/signup", (req, res) => {
   res.render("authentication/signup", { message: req.flash("error") });
 });
 
 router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
-  const username = req.body.username;
+  username = req.body.username;
   const password = req.body.password;
-  const avatar = req.file.url ? req.file.url : "";
+  const avatar = req.file ? req.file.url : '';
   const email = req.body.email;
-  const roles = req.body.roles;
+  const role = req.body.role;
+  const babyname = req.body.babyname;
+  const nursame = req.body.nursame;
+  const parentname = req.body.parentname;
+  const emailCorrespondant = req.body.emailCorrespondant;
+  const roleUser = req.body.role;
+  let isParent; 
+  let isNurse;
 
   // 1. Check username and password are not empty
   if (username === "" || password === "") {
@@ -29,10 +41,40 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
     return;
   }
 
+  // Roles
+  if(req.body.role === 'parent') {
+    isParent = true;
+    isNurse = false;
+    //parentname = username;
+
+  } else if(req.body.role === 'nurse') {
+    isParent = false;
+    isNurse = true;
+    //nursame = username;
+  }
+
+  if(!!emailCorrespondant) {
+    let transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+        user: 'your email address',
+        pass: 'your email password'
+      }
+    });
+    transporter.sendMail({
+      from: '"DailyBaby Project" <sylviamoreno.pro@gmail.com>',
+      to: emailCorrespondant, 
+      subject: `${username} vous invite à rejoindre son réseau DailyBaby`,
+      text: `Inscrivez vous au réseau de ${username}`,
+      html: `<p>Inscrivez vous au réseau de ${username}</p>`
+    })
+    .then(info => res.render('message', {email, subject, message, info}))
+    .catch(error => console.log(error));
+  }
   User.findOne({ username })
     .then(user => {
       // 2. Check user does not already exist
-      if (user) {
+      if (user !== null) {
         res.render("authentication/signup", {
           errorMessage: "The username already exists"
         });
@@ -52,7 +94,13 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
         password: hashPass,
         avatar,
         email,
-        roles
+        role,
+        babyname,
+        isParent,
+        isNurse,
+        nursame,
+        parentname,
+        emailCorrespondant,
       });
 
       newUser
@@ -92,7 +140,7 @@ router.post("/login", (req, res, next) => {
 
     if (!user) {
       // Unauthorized, `failureDetails` contains the error messages from our logic in "LocalStrategy" {message: '…'}.
-      res.render("authentication/login", { errorMessage: "Wrong password or username" });
+      res.render("authentication/login", { errorMessage: "Wrong password or email" });
       return;
     } 
 
@@ -116,6 +164,27 @@ router.get("/logout", (req, res) => {
   res.redirect("/signup");
 });
 
-// FORGOT PASSWORD
+// SEND EMAIL TO CORRESPONDANT
+router.post('/send-email-correspondant', (req, res, next) => {
+  //Email au correspodant 
+  if(!!emailCorrespondant) {
+    let transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+        user: 'your email address',
+        pass: 'your email password'
+      }
+    });
+    transporter.sendMail({
+      from: '"DailyBaby Project" <sylviamoreno.pro@gmail.com>',
+      to: emailCorrespondant, 
+      subject: `${username} vous invite à rejoindre son réseau DailyBaby`,
+      text: `Inscrivez vous au réseau de ${username}`,
+      html: `<p>Inscrivez vous au réseau de ${username}</p>`
+    })
+    .then(info => res.render('message', {email, subject, message, info}))
+    .catch(error => console.log(error));
+  }
+});
 
 module.exports = router;

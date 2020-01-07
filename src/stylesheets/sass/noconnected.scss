@@ -1,0 +1,30 @@
+.no-user-connected {
+  .main-visual-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    .img-box {
+      width: 400px;
+      margin: -50px auto;
+      img {
+        max-width: 100%;
+      }
+    }
+
+    .base-line {
+        color: #fff;
+       &--first {
+           font-weight: bold;
+           font-size: 40px;
+       }
+
+       &--second {
+        font-size: 18px;
+       }
+    }
+
+    .btn-access-container {
+        margin: 20px 0;
+    }
+  }
+}

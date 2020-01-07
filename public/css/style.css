@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Montserrat:400,500,800&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap");
 html,
 body {
@@ -6,10 +6,15 @@ body {
   height: 100%; }
 
 body {
-  font-family: "Open Sans", sans-serif !important;
-  background-color: #fff; }
+  font-family: 'Montserrat', sans-serif !important;
+  background-color: #fff;
+  color: #1d1d1d; }
 
 .wrapper {
+  height: auto;
+  min-height: calc(100vh); }
+
+.no-user-connected {
   height: auto;
   min-height: calc(100vh);
   background: #5eced3;
@@ -17,6 +22,16 @@ body {
   background: -webkit-linear-gradient(180deg, #5eced3 0%, #8070da 100%);
   background: linear-gradient(180deg, #5eced3 0%, #8070da 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5eced3",endColorstr="#8070da",GradientType=1); }
+
+.private-page-wrapper .private-page-wrapper--top {
+  background: #5eced3;
+  background: -moz-linear-gradient(180deg, #5eced3 0%, #8070da 100%);
+  background: -webkit-linear-gradient(180deg, #5eced3 0%, #8070da 100%);
+  background: linear-gradient(180deg, #5eced3 0%, #8070da 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5eced3",endColorstr="#8070da",GradientType=1); }
+
+.private-page-wrapper .private-page-wrapper--bottom {
+  background: #fff; }
 
 a {
   color: #00b7ff; }
@@ -8045,30 +8060,53 @@ h1 {
     color: #fff; }
 
 .text-center {
-  text-align: center;
-  color: #fff; }
+  text-align: center; }
 
-.form {
+.isNotVisible {
+  display: none; }
+
+.isVisible {
+  display: block; }
+
+#form {
   display: flex;
   justify-content: center; }
-  .form form {
+  #form input,
+  #form select {
+    font-family: "Montserrat", sans-serif !important; }
+  #form form {
     display: flex;
     flex-direction: column;
     width: 80%;
     justify-content: center; }
-  .form-container {
+  #form-container {
     margin-bottom: 20px; }
-  .form .label-container {
+  #form .label-container {
     display: flex;
     flex-direction: column;
-    color: #fff;
+    color: #1d1d1d;
     font-size: 14px; }
-    .form .label-container input {
+    #form .label-container input {
       border: 0px;
       border-bottom: 1px solid lightgray;
       margin-bottom: 15px;
       padding: 5px 8px 5px;
       background: none; }
+  #form .control {
+    margin-bottom: 20px; }
+    #form .control input {
+      border: none;
+      border-bottom: 1px solid lightgray;
+      border-radius: 0;
+      box-shadow: none; }
+      #form .control input::placeholder {
+        font-family: "Montserrat", sans-serif !important; }
+  #form .select-role {
+    margin-bottom: 40px; }
+    #form .select-role select {
+      border-color: lightgray;
+      color: #1d1d1d;
+      font-family: inherit; }
 
 .button {
   margin: 20px 0;
@@ -8077,6 +8115,16 @@ h1 {
     background-color: #5eced3;
     color: #fff;
     border: none; }
+
+.btn-login--home {
+  color: white;
+  background: black;
+  border: none;
+  font-weight: 800;
+  transition: transform 200ms ease; }
+  .btn-login--home:hover {
+    transform: translateY(-2px);
+    color: #fff; }
 
 .select {
   display: inline-grid !important; }
@@ -8106,9 +8154,43 @@ h1 {
     .avatar-baby-pic img {
       position: absolute; }
   .avatar-name {
-    color: #fff;
+    color: #1d1d1d;
     font-weight: 800;
     font-size: 25px;
     padding: 10px 20px 0; }
     .avatar-name:first-letter {
       text-transform: uppercase; }
+
+#header {
+  background-color: #5eccd3;
+  border-bottom: 1px solid #fff; }
+  #header .logo span {
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-size: 30px;
+    color: #fff; }
+  #header .navbar-burger span {
+    border-radius: 16px !important;
+    width: 23px !important;
+    height: 3px !important;
+    color: #fff !important; }
+  #header #navbarBasicExample {
+    background-color: #5eccd3 !important; }
+
+.no-user-connected .main-visual-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center; }
+  .no-user-connected .main-visual-container .img-box {
+    width: 400px;
+    margin: -50px auto; }
+    .no-user-connected .main-visual-container .img-box img {
+      max-width: 100%; }
+  .no-user-connected .main-visual-container .base-line {
+    color: #fff; }
+    .no-user-connected .main-visual-container .base-line--first {
+      font-weight: bold;
+      font-size: 40px; }
+    .no-user-connected .main-visual-container .base-line--second {
+      font-size: 18px; }
+  .no-user-connected .main-visual-container .btn-access-container {
+    margin: 20px 0; }

@@ -1,37 +1,43 @@
-const mongoose = require('mongoose');
-const Schema   = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const UserSchema = Schema({
   username: String,
-  email:    String,
+  email: String,
   password: String,
   avatar: String,
-  roles: {
+  role: {
     type: String,
-    enum: ['baby', 'nurse', 'parent']
-    //enum: ['baby', 'nurse', 'parent']
-    //baby: { type: Schema.Types.ObjectId, ref: 'Baby' },
-    //nurse: {type: Schema.Types.ObjectId, ref: 'Nurse' },
-    //parent: { type: Schema.Types.ObjectId, ref: 'Parent' }
+    enum: ["baby", "nurse", "parent"]
   },
-  contrats: [{
-      babies: [{
-        type: Schema.Types.ObjectId, 
-        ref: 'Baby' 
-      }],
-      parents: [{
-        type: Schema.Types.ObjectId, 
-        ref: 'Parent' 
-      }],
-      nurse: {type: Schema.Types.ObjectId, ref: 'Nurse' }
-    }]
+  contrats: [
+    {
+      baby: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "baby"
+        }
+      ],
+      parent: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "parent"
+        }
+      ],
+      nurse: { type: Schema.Types.ObjectId, ref: "nurse" }
+    }
+  ],
+  babyname: String,
+  nursename: String,
+  parentname: String,
+  isNurse: Boolean,
+  isParent: Boolean,
+  confirmationCode: String,
 });
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
-
-
 
 ////////
 //// https://stackoverflow.com/questions/38639248/mongoose-model-for-multi-types-of-users
