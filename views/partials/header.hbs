@@ -1,10 +1,11 @@
 <nav id="header" class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item logo" href="/">
-      <span >DailyBaby</span>
+      <span>DailyBaby</span>
     </a>
 
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -13,11 +14,11 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <!--
-      <a class="navbar-item">
-        Home
-      </a>
 
+      <a href="/profil" class="navbar-item">
+        Profil
+      </a>
+      <!--
       <a class="navbar-item">
         Documentation
       </a>
@@ -49,12 +50,16 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
+          {{#unless user}}
+          <a class="button is-primary" href="/signup">
             <strong>Sign up</strong>
           </a>
-          <a class="button is-light">
+          <a class="button is-light" href="/login">
             Log in
           </a>
+          {{else}}
+          {{#user}}<a class="button is-primary" href="/logout">Logout</a>{{/user}}
+          {{/unless}}
         </div>
       </div>
     </div>

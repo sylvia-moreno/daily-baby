@@ -12,7 +12,8 @@ body {
 
 .wrapper {
   height: auto;
-  min-height: calc(100vh); }
+  min-height: calc(100vh);
+  position: relative; }
 
 .no-user-connected {
   height: auto;
@@ -20,7 +21,7 @@ body {
   background: #5eced3;
   background: -moz-linear-gradient(180deg, #5eced3 0%, #8070da 100%);
   background: -webkit-linear-gradient(180deg, #5eced3 0%, #8070da 100%);
-  background: linear-gradient(180deg, #5eced3 0%, #8070da 100%);
+  background: linear-gradient(180deg, #5eced3 0%, #8171da 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5eced3",endColorstr="#8070da",GradientType=1); }
 
 .private-page-wrapper .private-page-wrapper--top {
@@ -35,6 +36,21 @@ body {
 
 a {
   color: #00b7ff; }
+
+.background-degrade {
+  position: absolute;
+  height: 500px;
+  width: 100%;
+  z-index: 1;
+  background: #5eced3;
+  background: -moz-linear-gradient(180deg, #5eced3 0%, #8070da 100%);
+  background: -webkit-linear-gradient(180deg, #5eced3 0%, #8070da 100%);
+  background: linear-gradient(180deg, #5eced3 0%, #8171da 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5eced3",endColorstr="#8070da",GradientType=1); }
+
+.container-secondaire {
+  position: relative;
+  z-index: 10; }
 
 @keyframes spinAround {
   from {
@@ -8029,7 +8045,8 @@ h1 {
 
 .daily-card {
   position: relative;
-  background-color: #ffffff;
+  background-image: url("/images/pixel-heart.png");
+  background-repeat: repeat;
   height: 450px;
   margin: 15px 20px;
   border-radius: 16px;
@@ -8141,7 +8158,7 @@ h1 {
 .avatar {
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
+  margin: 50px 0;
   flex-direction: column;
   align-items: center; }
   .avatar-baby-pic {
@@ -8154,7 +8171,7 @@ h1 {
     .avatar-baby-pic img {
       position: absolute; }
   .avatar-name {
-    color: #1d1d1d;
+    color: #fff;
     font-weight: 800;
     font-size: 25px;
     padding: 10px 20px 0; }
@@ -8162,10 +8179,10 @@ h1 {
       text-transform: uppercase; }
 
 #header {
-  background-color: #5eccd3;
-  border-bottom: 1px solid #fff; }
+  font-family: "Montserrat", sans-serif !important;
+  background-color: transparent; }
   #header .logo span {
-    font-family: 'Love Ya Like A Sister', cursive;
+    font-family: "Love Ya Like A Sister", cursive;
     font-size: 30px;
     color: #fff; }
   #header .navbar-burger span {
@@ -8174,7 +8191,17 @@ h1 {
     height: 3px !important;
     color: #fff !important; }
   #header #navbarBasicExample {
-    background-color: #5eccd3 !important; }
+    background-color: transparent !important; }
+  #header a.navbar-item,
+  #header .navbar-link {
+    color: white;
+    font-weight: bolder; }
+    #header a.navbar-item:hover,
+    #header .navbar-link:hover {
+      color: #5eccd3; }
+  @media screen and (max-width: 768px) {
+    #header .navbar-item .buttons {
+      justify-content: center; } }
 
 .no-user-connected .main-visual-container {
   display: flex;

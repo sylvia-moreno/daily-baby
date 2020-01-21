@@ -1,21 +1,38 @@
-
 #header {
-    background-color: #5eccd3;
-    border-bottom: 1px solid #fff;
-    .logo span {
-        font-family: 'Love Ya Like A Sister', cursive;
-        font-size: 30px;
-        color: #fff;
-    }
+  //background-color: #5eccd3;
+  font-family: $FONT_MONTSERRAT;
+  background-color: transparent;
+  .logo span {
+    font-family: "Love Ya Like A Sister", cursive;
+    font-size: 30px;
+    color: #fff;
+  }
 
-    .navbar-burger span {
-        border-radius: 16px !important;
-        width: 23px !important;
-        height: 3px !important;
-        color: #fff !important;
-    }
+  .navbar-burger span {
+    border-radius: 16px !important;
+    width: 23px !important;
+    height: 3px !important;
+    color: #fff !important;
+  }
 
-    #navbarBasicExample {
-        background-color: #5eccd3 !important;
+  #navbarBasicExample {
+    background-color: transparent !important;
+  }
+
+  a.navbar-item,
+  .navbar-link {
+    color: white;
+    font-weight: bolder;
+    &:hover {
+      color: #5eccd3;
     }
+  }
+
+  .navbar-item {
+    .buttons {
+      @media screen and (max-width: 768px) {
+        justify-content: center;
+      }
+    }
+  }
 }

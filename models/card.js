@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const cardSchema = Schema({
-  date: String,
+  day: String,
+  month: String,
+  year: String,
   status: {
     enum:['in', 'out']
   }, 

@@ -1,11 +1,29 @@
+{{#user}}  
 <div class="container">
-  <div class="logo">
-    <img src="./images/logo_transparent.png" alt="logo daily baby" />
-  </div>
+  <h1>Ton profil {{username}}</h1>
+
+
+  <h2>Ajouter un bb</h2>
   <div class="form form-signup" id="form">
-    <form action="/signup" method="post" enctype="multipart/form-data">
+    <form action="/add-baby" method="post" enctype="multipart/form-data">
       <p class="control has-icons-left has-icons-right">
-        <input class="input" type="text" name="username" placeholder="Username">
+        <input class="input" type="text" name="username" placeholder="Nom de l'enfant">
+        <span class="icon is-small is-left">
+          <i class="fas fa-baby"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i class="fas fa-check"></i>
+        </span>
+      </p>
+      <button type="submit" class="button button-login is-rounded">Ajouter un enfant</button>
+    </form>
+  </div>
+
+  <h2>Mise à jour de mes infos</h2>
+  <div class="form form-signup" id="form">
+    <form action="/update" method="post" enctype="multipart/form-data">
+      <p class="control has-icons-left has-icons-right">
+        <input class="input" type="text" name="username" placeholder={{username}}>
         <span class="icon is-small is-left">
           <i class="far fa-user"></i>
         </span>
@@ -15,7 +33,7 @@
       </p>
 
       <p class="control has-icons-left has-icons-right">
-        <input class="input" type="text" name="email" placeholder="Email">
+        <input class="input" type="text" name="email" placeholder={{email}}>
         <span class="icon is-small is-left">
           <i class="fas fa-envelope"></i>
         </span>
@@ -35,7 +53,7 @@
       </p>
 
       <p class="control has-icons-left has-icons-right">
-        <input class="input" type="file" name="photo" placeholder="Votre avatar">
+        <input class="input" type="file" name="photo" placeholder={{avatar}}>
         <span class="icon is-small is-left">
           <i class="fas fa-file-upload"></i>
         </span>
@@ -54,41 +72,14 @@
       </div>
 
 
-      {{!-- <p class="control has-icons-left has-icons-right">
-        <input class="input" type="babyname" name="babyname" placeholder="Nom de l'enfant">
-        <span class="icon is-small is-left">
-          <i class="fas fa-baby"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
-        </span>
-      </p>
 
-      <p class="control has-icons-left has-icons-right isNotVisible input-parent-data">
-        <input class="input" type="nursename" name="nursename" placeholder="Nom de l'assistante maternelle">
-        <span class="icon is-small is-left">
-          <i class="fas fa-hands-helping"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
-        </span>
-      </p>
-
-      <p class="control has-icons-left has-icons-right isNotVisible input-nurse-data">
-        <input class="input" type="parentname" name="parentname" placeholder="Nom de la famille de l'enfant">
-        <span class="icon is-small is-left">
-          <i class="fas fa-user-friends"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
-        </span>
-      </p> --}}
 
       {{#if errorMessage}}
       <div class="error-message">{{errorMessage}}</div>
       {{/if}}
       <button type="submit" class="button button-login is-rounded">Créer un compte</button>
-      <p class="text-center">Avez vous déjà un compte ? <a href="/login">Connectez vous</a></p>
+
     </form>
   </div>
 </div>
+{{/user}}

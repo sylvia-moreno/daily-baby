@@ -1,18 +1,22 @@
 const express = require("express");
 const router = express.Router();
-
 const passport = require("passport");
+
 const User = require("../models/user.js");
+const Contrat = require("../models/contrat");
 
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 const uploadCloud = require("../config/cloudinary.js");
 
-const nodemailer = require("nodemailer");
-
-let emailCorrespondant;
-let username;
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.redirect('/login')
+  }
+}
 
 // SIGNUP
 router.get("/signup", (req, res) => {
@@ -20,15 +24,15 @@ router.get("/signup", (req, res) => {
 });
 
 router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
-  username = req.body.username;
+  const username = req.body.username;
   const password = req.body.password;
-  const avatar = req.file ? req.file.url : '';
+  const avatar = req.file ? req.file.url : '<img src="https://img.icons8.com/ios/50/000000/day-care.png">';
   const email = req.body.email;
   const role = req.body.role;
-  const babyname = req.body.babyname;
+  // const babyname = req.body.babyname;
   const nursame = req.body.nursame;
   const parentname = req.body.parentname;
-  const emailCorrespondant = req.body.emailCorrespondant;
+  // const emailCorrespondant = req.body.emailCorrespondant;
   const roleUser = req.body.role;
   let isParent; 
   let isNurse;
@@ -48,35 +52,20 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
     //parentname = username;
 
   } else if(req.body.role === 'nurse') {
+    if (avatar == '') {
+      avatar = 'https://img.icons8.com/ios/50/000000/day-care.png';
+    }
     isParent = false;
     isNurse = true;
     //nursame = username;
   }
-
-  if(!!emailCorrespondant) {
-    let transporter = nodemailer.createTransport({
-      service: 'Gmail',
-      auth: {
-        user: 'your email address',
-        pass: 'your email password'
-      }
-    });
-    transporter.sendMail({
-      from: '"DailyBaby Project" <sylviamoreno.pro@gmail.com>',
-      to: emailCorrespondant, 
-      subject: `${username} vous invite à rejoindre son réseau DailyBaby`,
-      text: `Inscrivez vous au réseau de ${username}`,
-      html: `<p>Inscrivez vous au réseau de ${username}</p>`
-    })
-    .then(info => res.render('message', {email, subject, message, info}))
-    .catch(error => console.log(error));
-  }
-  User.findOne({ username })
+  
+  User.findOne({ email })
     .then(user => {
       // 2. Check user does not already exist
-      if (user !== null) {
+      if (user) {
         res.render("authentication/signup", {
-          errorMessage: "The username already exists"
+          errorMessage: "The emailusername already exists"
         });
         return;
       }
@@ -95,12 +84,12 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
         avatar,
         email,
         role,
-        babyname,
+        // babyname,
         isParent,
         isNurse,
         nursame,
         parentname,
-        emailCorrespondant,
+        // emailCorrespondant,
       });
 
       newUser
@@ -121,7 +110,6 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
 // LOGIN
 router.get("/login", (req, res) => {
   res.render("authentication/login", { message: req.flash("error") });
-  console.log("req: ", req);
 });
 
 /*router.post('/login', passport.authenticate('local', {
@@ -130,29 +118,28 @@ router.get("/login", (req, res) => {
   failureFlash : true
 }));*/
 
-
-router.post("/login", (req, res, next) => {
+router.post('/login', (req, res, next) => {
   passport.authenticate("local", (err, user, failureDetails) => {
     if (err) {
       // Something went wrong authenticating user
       return next(err);
     }
-
+  
     if (!user) {
       // Unauthorized, `failureDetails` contains the error messages from our logic in "LocalStrategy" {message: '…'}.
       res.render("authentication/login", { errorMessage: "Wrong password or email" });
       return;
-    } 
+    }
 
     // save user in session: req.user
-    req.login(user, err => {
+    req.login(user, (err) => {
       if (err) {
         // Session save went bad
         return next(err);
       }
 
       // All good, we are now logged in and `req.user` is now set
-      res.redirect("/");
+      res.redirect('/')
     });
   })(req, res, next);
 });
@@ -164,27 +151,10 @@ router.get("/logout", (req, res) => {
   res.redirect("/signup");
 });
 
-// SEND EMAIL TO CORRESPONDANT
-router.post('/send-email-correspondant', (req, res, next) => {
-  //Email au correspodant 
-  if(!!emailCorrespondant) {
-    let transporter = nodemailer.createTransport({
-      service: 'Gmail',
-      auth: {
-        user: 'your email address',
-        pass: 'your email password'
-      }
-    });
-    transporter.sendMail({
-      from: '"DailyBaby Project" <sylviamoreno.pro@gmail.com>',
-      to: emailCorrespondant, 
-      subject: `${username} vous invite à rejoindre son réseau DailyBaby`,
-      text: `Inscrivez vous au réseau de ${username}`,
-      html: `<p>Inscrivez vous au réseau de ${username}</p>`
-    })
-    .then(info => res.render('message', {email, subject, message, info}))
-    .catch(error => console.log(error));
-  }
-});
+// PARENT WANTS TO ADD A BABY
+// Saisir les infos du bébé dans un formulaire
+// Récupérer les infos, et créer un nouveau user de type "baby"
+// Dans le then, trouver l'object du parent qui crée le baby (donc toi en l'occurrence), et pusher l'ObjectId du bébé fraîchement créé dans l'array myChildren du parent
+// Une méthode qui peut t'aider pour cette dernière étape, est .findByIdAndUpdate(), check le cours sur learn.ironhack
 
 module.exports = router;

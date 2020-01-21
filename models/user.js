@@ -12,27 +12,21 @@ const UserSchema = Schema({
   },
   contrats: [
     {
-      baby: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "baby"
-        }
-      ],
-      parent: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "parent"
-        }
-      ],
-      nurse: { type: Schema.Types.ObjectId, ref: "nurse" }
+      type: Schema.Types.ObjectId,
+      ref: "Contrat",
     }
   ],
-  babyname: String,
-  nursename: String,
-  parentname: String,
+  myChildren: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ],
   isNurse: Boolean,
   isParent: Boolean,
-  confirmationCode: String,
+  // nursename: String,
+  // parentname: String,
+  // confirmationCode: String,
 });
 
 const User = mongoose.model("User", UserSchema);

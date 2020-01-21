@@ -15,7 +15,11 @@ const PostSchema = Schema({
       imagePath: String,
       imageName: String
     }
-  ]
+  ],
+  created: { 
+    type: Date,
+    default: Date.now()
+  },
 });
 
 const Post = mongoose.model('Post', PostSchema);

@@ -26,7 +26,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 app.use(session({
-  secret: 'dailybdev',
+  secret: '"our-passport-local-strategy-app',
   resave: false,
   saveUninitialized: true,
   store: new MongoStore( { mongooseConnection: mongoose.connection })
@@ -54,13 +54,16 @@ passport.deserializeUser((id, cb) => {
 });
 
 passport.use(new LocalStrategy(
-  {passReqToCallback: true},
+  {
+    passReqToCallback: true,
+    usernameField: "email",
+  },
   (...args) => {
     const [req,,, done] = args;
 
-    const {username, password} = req.body;
+    const {email, password} = req.body;
 
-    User.findOne({username})
+    User.findOne({email})
       .then(user => {
         if (!user) {
           return done(null, false, { message: "Le nom d'utilisateur n'est pas correcte." });
@@ -80,10 +83,13 @@ passport.use(new LocalStrategy(
 const index = require('./routes/index');
 const authRoutes = require('./routes/authentication');
 const postsRoutes = require('./routes/posts');
+const profilRoute = require('./routes/profil');
 
 app.use('/', index);
 app.use('/', authRoutes);
 app.use('/posts', postsRoutes);
+app.use('/', profilRoute);
+
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
