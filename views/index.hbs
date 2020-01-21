@@ -6,15 +6,14 @@
 
  
   {{else}}
-  {{user}}
   <div class="background-degrade"></div>
     {{> header}}
     {{!-- {{this}} --}}
     <div class="container-secondaire">
-      date: {{todayDate}}
+      <div class="today-date"><span>{{todayDate}}</span></div>
       <div class="avatar">
         <div class="avatar-baby-pic">
-          <img src="{{avatar}}" alt="user photo">
+          <img src="{{user.avatar}}" alt="user photo">
         </div>
         <div class="avatar-name">{{user.username}}</div>
       </div>
@@ -25,16 +24,16 @@
           <div class="column daily-card">
             <div class="daily-card__date">
               <div class="daily-card__date--container">
-                <span class="numb">{{comment}}</span>
-                <span class="month">{{created}}</span>
+                <span class="numb">{{day}}</span>
+                <span class="month">{{month}}</span>
               </div>
             </div>
-            <div class="daily-card__edit"><a href="/posts/{{id}}">éditer</a></div>
+            <div class="daily-card__edit"><a href="/posts/{{id}}"><i class="fas fa-pen"></i></a></div>
           </div>
           {{/each}}
         </div>
       </div>
-      <div class="daily-card__edit"><a href="/posts/new">éditer une nouvelle</a></div>
+      <div class="daily-card__edit-other"><a href="/posts/new">éditer une nouvelle</a></div>
     </div>
   </div>
     {{/unless}}

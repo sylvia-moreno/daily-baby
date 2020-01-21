@@ -1,0 +1,38 @@
+.daily-post {
+  &__article {
+    &-img {
+      width: 700px;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+      border: 1px solid #c9c4c4;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    &-title {
+      font-family: $FONT_MONTSERRAT;
+      text-transform: uppercase;
+      color: $COLOR_BLACK;
+      font-weight: bold;
+      border-bottom: 1px solid;
+    }
+
+    &-text {
+        margin: 20px 10px;
+    }
+  }
+  &__slider {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+
+    &-button {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #cbcbcb;
+    }
+  }
+}

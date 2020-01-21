@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Montserrat:400,500,800&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Montserrat:400,500,800&display=swap");
 $color_white: #fff;
 $COLOR_BLACK: #1d1d1d;
-$FONT_MONTSERRAT:  'Montserrat', sans-serif !important;
+$FONT_MONTSERRAT: "Montserrat", sans-serif !important;
 
 html,
 body {
@@ -10,9 +10,9 @@ body {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
   background-color: #fff;
-  color:  #1d1d1d;
+  color: #1d1d1d;
 }
 
 .wrapper {
@@ -21,7 +21,7 @@ body {
   position: relative;
 }
 
-.no-user-connected{
+.no-user-connected {
   height: auto;
   min-height: calc(100vh);
   background: rgb(94, 206, 211);
@@ -100,4 +100,18 @@ a {
 .container-secondaire {
   position: relative;
   z-index: 10;
+}
+
+.today-date {
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+  margin: 35px 0;
+
+  span {
+    border: 1px solid #fff;
+    padding: 6px 35px;
+    border-radius: 35px;
+    color: #fff;
+  }
 }

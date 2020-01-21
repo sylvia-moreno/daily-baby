@@ -9,7 +9,7 @@
     "js-build": "babel src/js -o public/js/index.js",
     "js-watch": "npm run js-build -- --watch",
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "nodemon --inspect ./bin/www"
   },
   "dependencies": {
     "babel": "^6.23.0",

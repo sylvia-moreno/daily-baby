@@ -25,11 +25,11 @@ const locales = {
 /* GET home page. */
 router.get("/", (req, res, next) => {
   const today = new Date();
-  const day = format(today, "d") + ' ';
-  const month = format(today, "MMM") + ' ';
-  const year = format(today, "yyyy") + ' ';
+  const day = format(today, "d") + " ";
+  const month = format(today, "MMM") + " ";
+  const year = format(today, "yyyy") + " ";
 
-    const todayDate = day + month + year;
+  const todayDate = day + month + year;
 
   const daysInterval = eachDayOfInterval(
     {
@@ -62,9 +62,12 @@ router.get("/", (req, res, next) => {
       days: daysData.reverse(),
       posts: posts,
       todayDate: todayDate,
+      day: day,
+      month: month,
+      year: year,
     });
   });
-  
+
   console.log("todayDate:", todayDate);
 });
 

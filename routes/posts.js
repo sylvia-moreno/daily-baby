@@ -53,7 +53,7 @@ router.get("/:id", function(req, res, next) {
 
       res.render("posts/show", {
         post: post,
-        user: req.user
+        user: req.user,
       });
     })
     .catch(next);
