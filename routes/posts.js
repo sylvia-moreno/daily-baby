@@ -45,7 +45,12 @@ router.post("/new", uploadCloud.single("pic"), function(req, res, next) {
 
 router.get("/:id", function(req, res, next) {
   const id = req.params.id;
+  const today = new Date();
+  const day = format(today, "d") + " ";
+  const month = format(today, "MMM") + " ";
+  const year = format(today, "yyyy") + " ";
 
+  const todayDate = day + month + year;
   Post.findById(id)
     .populate("comments.authorId") // on vient remplacer le nom de l'auteur id
     .then(post => {
@@ -54,6 +59,7 @@ router.get("/:id", function(req, res, next) {
       res.render("posts/show", {
         post: post,
         user: req.user,
+        todayDate: todayDate,
       });
     })
     .catch(next);

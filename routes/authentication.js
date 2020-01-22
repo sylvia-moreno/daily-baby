@@ -148,7 +148,7 @@ router.post('/login', (req, res, next) => {
 //LOGOUT
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/signup");
+  res.redirect("/");
 });
 
 // PARENT WANTS TO ADD A BABY

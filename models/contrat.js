@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Post = require("./post");
 
 const contratSchema = Schema({
-  baby: {
-    type: Schema.Types.ObjectId,
-    ref: "User"
-  },
+  baby: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User"
+    }
+  ],
   parent: {
     type: Schema.Types.ObjectId,
     ref: "User"
@@ -14,24 +17,10 @@ const contratSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: "User"
   },
-  messages: [
+  posts: [
     {
-      content: String,
-      creatorId: { type: Schema.Types.ObjectId, ref: "User" },
-      picPath: String,
-      picName: String,
-      comments: [
-        {
-          content: String,
-          authorId: { type: Schema.Types.ObjectId, ref: "User" },
-          imagePath: String,
-          imageName: String
-        }
-      ],
-      created: {
-        type: Date,
-        default: Date.now()
-      }
+      type: Schema.Types.ObjectId,
+      ref: "Post"
     }
   ]
 });

@@ -16,12 +16,22 @@ const UserSchema = Schema({
       ref: "Contrat",
     }
   ],
-  myChildren: [
+  // myChildren: [ // dans profil.js au get de l'url je n'arrive pas à findById sur un tableau
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'User',
+  //     name: String,
+  //     age: String,
+  //   }
+  // ],
+  myChildren: 
     {
       type: Schema.Types.ObjectId,
       ref: 'User',
+      name: String,
+      age: String,
     }
-  ],
+  ,
   isNurse: Boolean,
   isParent: Boolean,
   // nursename: String,

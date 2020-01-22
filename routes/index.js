@@ -6,7 +6,7 @@ const getDay = require("date-fns/getDay");
 const format = require("date-fns/format");
 
 const Post = require("../models/post.js");
-const Card = require("../models/card");
+const Contrat = require("../models/contrat");
 
 // const frLocale = require("date-fns/locale/fr");
 
@@ -49,14 +49,7 @@ router.get("/", (req, res, next) => {
     return a;
   });
 
-  Post.find().then(posts => {
-    /* const arrPosts = posts.map(post => ({
-      id: post.id,
-      content: post.content,
-      createdDay: format(d, "d"),
-      createdMonth: format(d, "MMM"),
-      createdYear: format(d, "yyyy")
-    })); */
+  Post.find().then(posts => { // se baser sur les contrats 
     res.render("index", {
       user: req.user,
       days: daysData.reverse(),
@@ -67,6 +60,19 @@ router.get("/", (req, res, next) => {
       year: year,
     });
   });
+
+  // Contrat.find().then(posts => { // se baser sur les contrats 
+  //   debugger
+  //   res.render("index", {
+  //     user: req.user,
+  //     days: daysData.reverse(),
+  //     posts: posts,
+  //     todayDate: todayDate,
+  //     day: day,
+  //     month: month,
+  //     year: year,
+  //   });
+  // });
 
   console.log("todayDate:", todayDate);
 });

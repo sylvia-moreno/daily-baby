@@ -61,4 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
   !!selectListRole && checkRoleSignUpForm();
 });
 
-console.log("js run");
+
+//Toggle checkbox
+

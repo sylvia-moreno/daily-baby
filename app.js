@@ -21,6 +21,8 @@ mongoose.connect('mongodb://localhost:27017/daily-b');
 const app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
+hbs.registerPartials(__dirname + "/views/profil/partials");
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

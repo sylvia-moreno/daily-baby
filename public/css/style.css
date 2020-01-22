@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Montserrat:400,500,800&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Proza+Libre:800&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap");
 html,
 body {
@@ -7,7 +8,7 @@ body {
 
 body {
   font-family: "Montserrat", sans-serif !important;
-  background-color: #fff;
+  background-color: #fdfdff;
   color: #1d1d1d; }
 
 .wrapper {
@@ -58,10 +59,10 @@ a {
   font-size: 13px;
   margin: 35px 0; }
   .today-date span {
-    border: 1px solid #fff;
+    border: 1px solid #66c0d4;
     padding: 6px 35px;
     border-radius: 35px;
-    color: #fff; }
+    color: #66c0d4; }
 
 @keyframes spinAround {
   from {
@@ -8056,8 +8057,6 @@ h1 {
 
 .daily-card {
   position: relative;
-  background-image: url("/images/pixel-heart.png");
-  background-repeat: repeat;
   height: 450px;
   margin: 15px 20px;
   border-radius: 16px;
@@ -8065,6 +8064,25 @@ h1 {
   border: solid 1px rgba(255, 103, 97, 0.14);
   transition: all 0.5s;
   width: 350px; }
+  .daily-card:after {
+    background: linear-gradient(45deg, #425fff 0%, rgba(198, 68, 253, 0.4) 100%);
+    bottom: 0;
+    content: " ";
+    display: block;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity .25s;
+    border-radius: 16px; }
+  .daily-card-img {
+    position: absolute;
+    height: 447px;
+    width: 348px;
+    top: 0;
+    left: 0;
+    border-radius: 16px; }
   .daily-card__date {
     position: absolute;
     color: #6c706e;
@@ -8084,19 +8102,60 @@ h1 {
   .daily-card__edit a {
     position: absolute;
     border-radius: 50px;
-    border: 1px solid #c6d6d8;
     width: 50px;
     height: 50px;
     bottom: -16px;
     left: 133px;
-    background: #c3ced0; }
+    background: #363636;
+    z-index: 10; }
     .daily-card__edit a .fa-pen {
       width: 15px;
       height: 15px;
-      color: #fff;
-      left: 16px;
+      color: #ffffffbf;
+      left: 18px;
       position: absolute;
-      top: 15px; }
+      top: 18px; }
+  .daily-card .new-card {
+    font-family: "Montserrat", sans-serif !important;
+    color: #fff;
+    font-size: 20px;
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 150px;
+    z-index: 10; }
+
+.card-manage {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  width: 100%;
+  background-color: #eb524a; }
+  .card-manage .content {
+    float: left;
+    width: 100%;
+    padding: 20px 30px 50px 30px;
+    position: relative;
+    text-align: center; }
+    .card-manage .content img {
+      float: left;
+      width: 30%;
+      margin-right: 10%;
+      display: inline-block;
+      border-radius: 50%; }
+    .card-manage .content aside {
+      width: 60%;
+      float: left;
+      color: #ffffff;
+      margin-top: 10px; }
+      .card-manage .content aside h1 {
+        font-weight: 100;
+        font-size: 22px;
+        margin-bottom: 10px; }
+      .card-manage .content aside p {
+        font-size: 14px;
+        letter-spacing: .5px;
+        line-height: 160%; }
 
 .login-title-page {
   font-weight: 800; }
@@ -8113,6 +8172,7 @@ h1 {
   display: block; }
 
 #form {
+  flex-direction: column;
   display: flex;
   justify-content: center; }
   #form input,
@@ -8121,7 +8181,7 @@ h1 {
   #form form {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     justify-content: center; }
   #form-container {
     margin-bottom: 20px; }
@@ -8170,6 +8230,16 @@ h1 {
     transform: translateY(-2px);
     color: #fff; }
 
+.btn-login--discover {
+  background: #eec0d5;
+  border: none;
+  font-weight: 800;
+  transition: transform 200ms ease;
+  color: white; }
+  .btn-login--discover:hover {
+    transform: translateY(-2px);
+    color: white; }
+
 .select {
   display: inline-grid !important; }
   .select select {
@@ -8181,6 +8251,26 @@ h1 {
 .select:not(.is-multiple):not(.is-loading)::after {
   border-color: #fafafac4 !important;
   top: 39px; }
+
+.form-manage li {
+  display: flex;
+  align-items: center;
+  margin: 25px 0; }
+  .form-manage li .checkbox {
+    margin-right: 25px; }
+
+.title-form {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: bold;
+  font-size: 30px;
+  color: #5dced3;
+  margin-bottom: 50px; }
+  .title-form:before {
+    content: '';
+    width: 10px;
+    height: 15px;
+    border: 2px solid #5dced3;
+    margin-right: 10px; }
 
 .avatar {
   display: flex;
@@ -8207,74 +8297,227 @@ h1 {
 
 #header {
   font-family: "Montserrat", sans-serif !important;
-  background-color: transparent; }
+  position: relative; }
   #header .logo span {
     font-family: "Love Ya Like A Sister", cursive;
     font-size: 30px;
-    color: #fff; }
+    background: -webkit-linear-gradient(#5eccd3, #8070da);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; }
   #header .navbar-burger span {
     border-radius: 16px !important;
     width: 23px !important;
-    height: 3px !important;
-    color: #fff !important; }
+    height: 3px !important; }
+  #header .navbar-burger span:nth-child(1) {
+    background: #5eccd3; }
+  #header .navbar-burger span:nth-child(2) {
+    background: #f8549e; }
+  #header .navbar-burger span:nth-child(3) {
+    background: #8070da; }
   #header #navbarBasicExample {
     background-color: transparent !important; }
   #header a.navbar-item,
   #header .navbar-link {
-    color: white;
-    font-weight: bolder; }
-    #header a.navbar-item:hover,
-    #header .navbar-link:hover {
-      color: #5eccd3; }
-  @media screen and (max-width: 768px) {
-    #header .navbar-item .buttons {
-      justify-content: center; } }
+    color: #8070da;
+    font-weight: bolder;
+    font-family: "Montserrat", sans-serif !important;
+    font-weight: 300; }
+  #header .navbar-item .buttons {
+    font-family: "Montserrat", sans-serif !important; }
+    @media screen and (max-width: 768px) {
+      #header .navbar-item .buttons {
+        justify-content: center; } }
+  #header .navbar-border-gradient {
+    background: linear-gradient(135deg, #5eccd3 0, #f8549e 60%, #8070da 100%);
+    height: .5rem;
+    width: 100%;
+    position: absolute;
+    top: 0; }
+  #header .is-primary {
+    background: #5eccd3; }
 
-.no-user-connected .main-visual-container {
-  display: flex;
-  flex-direction: column;
-  text-align: center; }
-  .no-user-connected .main-visual-container .img-box {
-    width: 400px;
-    margin: -50px auto; }
-    .no-user-connected .main-visual-container .img-box img {
-      max-width: 100%; }
-  .no-user-connected .main-visual-container .base-line {
-    color: #fff; }
-    .no-user-connected .main-visual-container .base-line--first {
-      font-weight: bold;
-      font-size: 40px; }
-    .no-user-connected .main-visual-container .base-line--second {
-      font-size: 18px; }
-  .no-user-connected .main-visual-container .btn-access-container {
+.no-user-connected {
+  background: #fffeff; }
+  .no-user-connected .main-visual-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center; }
+    .no-user-connected .main-visual-container .img-box {
+      width: 400px;
+      margin: -50px auto; }
+      .no-user-connected .main-visual-container .img-box img {
+        max-width: 100%; }
+    .no-user-connected .main-visual-container .base-line {
+      color: #8e6ed3; }
+      .no-user-connected .main-visual-container .base-line--first {
+        font-weight: bold;
+        font-size: 40px; }
+      .no-user-connected .main-visual-container .base-line--second {
+        font-size: 18px; }
+    .no-user-connected .main-visual-container .btn-access-container {
+      margin: 20px 0; }
+  .no-user-connected .illustration-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin: 150px 20px; }
+    .no-user-connected .illustration-container .illustration {
+      position: absolute;
+      background-size: 38%;
+      width: 500px;
+      height: 440px;
+      z-index: 1;
+      background-repeat: no-repeat; }
+    .no-user-connected .illustration-container .illustration-left {
+      background-image: url("../images/mum.png");
+      background-position-x: left;
+      left: 0; }
+    .no-user-connected .illustration-container .illustration-right {
+      background-image: url("../images/nurse.png");
+      background-position-x: right;
+      right: 0; }
+  .no-user-connected .cards-description {
+    display: flex;
+    flex-direction: column;
+    z-index: 10; }
+    .no-user-connected .cards-description .card {
+      position: relative;
+      background: #fff;
+      border-radius: 20px;
+      color: #1d1d1d;
+      font-weight: 100;
+      margin: 20px 0;
+      padding: 20px;
+      max-width: 430px; }
+      .no-user-connected .cards-description .card .title {
+        font-size: inherit;
+        font-weight: 500;
+        margin-bottom: 5px; }
+      .no-user-connected .cards-description .card:before {
+        position: absolute;
+        color: #ffd1e6;
+        content: '"';
+        font-family: "Proza Libre", sans-serif !important;
+        font-size: 78px;
+        top: -37px;
+        left: 19px; }
+      .no-user-connected .cards-description .card:nth-child(2):before {
+        right: -275px; }
+  .no-user-connected .wave-container {
+    position: relative;
+    height: 500px;
+    background: #fff1f5; }
+    .no-user-connected .wave-container:before {
+      position: absolute;
+      content: "";
+      bottom: 0px;
+      left: 0;
+      width: 100%;
+      height: 180px;
+      background: url(../images/wave.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      z-index: 10; }
+    .no-user-connected .wave-container .cards-description {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      flex-direction: row;
+      margin-top: 60px;
+      z-index: 15; }
+      .no-user-connected .wave-container .cards-description .card {
+        position: relative;
+        background: url("../images/bb.jpg");
+        background-size: cover;
+        max-width: 271px;
+        height: 350px;
+        z-index: 15; }
+        .no-user-connected .wave-container .cards-description .card p {
+          color: #ffffff;
+          font-weight: 800;
+          font-size: 25px; }
+        .no-user-connected .wave-container .cards-description .card .title {
+          position: absolute;
+          font-size: 12px;
+          max-width: 350px; }
+      .no-user-connected .wave-container .cards-description .text {
+        max-width: 350px;
+        z-index: 15; }
+
+.daily-post {
+  position: relative;
+  z-index: 12; }
+  .daily-post__article-img {
+    width: 700px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    border: 1px solid #c9c4c4;
+    border-radius: 14px;
+    overflow: hidden; }
+  .daily-post__article-title {
+    font-family: "Montserrat", sans-serif !important;
+    text-transform: uppercase;
+    color: #1d1d1d;
+    font-weight: bold;
+    border-bottom: 1px solid; }
+  .daily-post__article-text {
+    margin: 20px 10px; }
+  .daily-post__slider {
+    display: flex;
+    justify-content: center;
     margin: 20px 0; }
+    .daily-post__slider-button {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #cbcbcb; }
 
-.daily-post__article-img {
-  width: 700px;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  border: 1px solid #c9c4c4;
-  border-radius: 14px;
+.toggle {
+  isolation: isolate;
+  position: relative;
+  height: 24px;
+  width: 48px;
+  border-radius: 15px;
+  background: #d6d6d6;
+  overflow: hidden;
+  margin-right: 20px; }
+
+.toggle-inner {
+  z-index: 2;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  height: 22px;
+  width: 46px;
+  border-radius: 15px;
   overflow: hidden; }
 
-.daily-post__article-title {
-  font-family: "Montserrat", sans-serif !important;
-  text-transform: uppercase;
-  color: #1d1d1d;
-  font-weight: bold;
-  border-bottom: 1px solid; }
+.active-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 200%;
+  background: #003dda;
+  transform: translate3d(-100%, 0, 0);
+  transition: transform 0.05s linear 0.17s; }
 
-.daily-post__article-text {
-  margin: 20px 10px; }
+.toggle-state {
+  display: none; }
 
-.daily-post__slider {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0; }
-  .daily-post__slider-button {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: #cbcbcb; }
+.indicator {
+  height: 100%;
+  width: 200%;
+  background: white;
+  border-radius: 13px;
+  transform: translate3d(-75%, 0, 0);
+  transition: transform 0.35s cubic-bezier(0.85, 0.05, 0.18, 1.35); }
+
+.toggle-state:checked ~ .active-bg {
+  transform: translate3d(-50%, 0, 0); }
+
+.toggle-state:checked ~ .toggle-inner .indicator {
+  transform: translate3d(25%, 0, 0); }

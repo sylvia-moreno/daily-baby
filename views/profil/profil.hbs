@@ -1,13 +1,28 @@
-{{#user}}  
-<div class="container">
-  <h1>Ton profil {{username}}</h1>
+
+<div class="container section">
+  <h1>Ton profil {{user.username}}</h1>
+
+  <div class="avatar">
+        <div class="avatar-baby-pic">
+          <img src="{{user.avatar}}" alt="user photo">
+        </div>
+        <div class="avatar-name">{{user.username}}</div>
+      </div>
+
+  <h2>Mes enfants</h2>
+
+  <ul>
+    
+    babyname: {{babyname}}
+  </ul>
 
 
-  <h2>Ajouter un bb</h2>
+
   <div class="form form-signup" id="form">
+    <h2>Ajouter un bb</h2>
     <form action="/add-baby" method="post" enctype="multipart/form-data">
       <p class="control has-icons-left has-icons-right">
-        <input class="input" type="text" name="username" placeholder="Nom de l'enfant">
+        <input class="input" type="text" name="babyname" placeholder="Prénom de l'enfant">
         <span class="icon is-small is-left">
           <i class="fas fa-baby"></i>
         </span>
@@ -17,69 +32,111 @@
       </p>
       <button type="submit" class="button button-login is-rounded">Ajouter un enfant</button>
     </form>
+
+    <h2>Mise à jour de mes infos</h2>
+    <div class="form form-signup" id="form">
+      <form action="/update" method="post" enctype="multipart/form-data">
+        <p class="control has-icons-left has-icons-right">
+          <input class="input" type="text" name="username" placeholder={{username}}>
+          <span class="icon is-small is-left">
+            <i class="far fa-user"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+
+        <p class="control has-icons-left has-icons-right">
+          <input class="input" type="text" name="email" placeholder={{email}}>
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+
+        <p class="control has-icons-left has-icons-right">
+          <input class="input" type="password" name="password" placeholder="Password">
+          <span class="icon is-small is-left">
+            <i class="fas fa-unlock"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+
+        <p class="control has-icons-left has-icons-right">
+          <input class="input" type="file" name="photo" placeholder={{avatar}}>
+          <span class="icon is-small is-left">
+            <i class="fas fa-file-upload"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+
+
+        <div class="select select-role">
+          <span>Vous êtes:</span>
+          <select name="role" id="role" name="role" type="role">
+            <option value="parent">Parent</option>
+            <option value="nurse">Assistante maternelle</option>
+          </select>
+        </div>
+
+
+
+
+        {{#if errorMessage}}
+        <div class="error-message">{{errorMessage}}</div>
+        {{/if}}
+        <button type="submit" class="button button-login is-rounded">Mettre à jour</button>
+      </form>
+    </div>
+
+    <h2>Gérer la garde</h2>
+    <div class="form form-signup" id="form">
+      <form action="/manage" method="post" enctype="multipart/form-data">
+        <p>Si vous souhaitez trouver/changer de nounou</p>
+  
+        <p>Mes enfants</p>
+        <ul class="form-manage form-manage--children">
+          {{#each myChildren}}
+          <li>
+            <div class="toggle">
+              <input class="toggle-state" type="checkbox" name="checkbox" value="check">
+              <div class="toggle-inner">
+              <div class="indicator"></div>
+              </div>
+              <div class="active-bg"></div>
+            </div>
+
+            <div class="card-manage">
+              <label for="babyprofil">
+                <div class="content">
+                  <img src={{this.picPath}} alt="Profile Image">
+                    <aside>
+                      <h1>bLabal{{this.username}}</h1>
+                    </aside>
+                    </button>
+                  </div>
+              </label>
+            </div>
+
+          </li>
+          {{/each}}
+        </ul>
+
+        <p>Mes nounous dispo</p>
+        <ul class="form-manage form-manage--nurses">
+          {{#each nurse}}
+          <li>
+            <input type="checkbox" id={{this.username}} name="nurseprofil" checked>
+            <label for="babyprofil">{{this}}</label>
+          </li>
+          {{/each}}
+        </ul>
+      </form>
+    </div>
   </div>
-
-  <h2>Mise à jour de mes infos</h2>
-  <div class="form form-signup" id="form">
-    <form action="/update" method="post" enctype="multipart/form-data">
-      <p class="control has-icons-left has-icons-right">
-        <input class="input" type="text" name="username" placeholder={{username}}>
-        <span class="icon is-small is-left">
-          <i class="far fa-user"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
-        </span>
-      </p>
-
-      <p class="control has-icons-left has-icons-right">
-        <input class="input" type="text" name="email" placeholder={{email}}>
-        <span class="icon is-small is-left">
-          <i class="fas fa-envelope"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
-        </span>
-      </p>
-
-      <p class="control has-icons-left has-icons-right">
-        <input class="input" type="password" name="password" placeholder="Password">
-        <span class="icon is-small is-left">
-          <i class="fas fa-unlock"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
-        </span>
-      </p>
-
-      <p class="control has-icons-left has-icons-right">
-        <input class="input" type="file" name="photo" placeholder={{avatar}}>
-        <span class="icon is-small is-left">
-          <i class="fas fa-file-upload"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
-        </span>
-      </p>
-
-
-      <div class="select select-role">
-        <span>Vous êtes:</span>
-        <select name="role" id="role" name="role" type="role">
-          <option value="parent">Parent</option>
-          <option value="nurse">Assistante maternelle</option>
-        </select>
-      </div>
-
-
-
-
-      {{#if errorMessage}}
-      <div class="error-message">{{errorMessage}}</div>
-      {{/if}}
-      <button type="submit" class="button button-login is-rounded">Créer un compte</button>
-
-    </form>
-  </div>
-</div>
-{{/user}}

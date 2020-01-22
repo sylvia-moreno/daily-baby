@@ -1,18 +1,32 @@
 #header {
   //background-color: #5eccd3;
   font-family: $FONT_MONTSERRAT;
-  background-color: transparent;
+  //background-color: transparent;
+  position: relative;
   .logo span {
     font-family: "Love Ya Like A Sister", cursive;
     font-size: 30px;
-    color: #fff;
+    //color: #fff;
+    background: -webkit-linear-gradient(#5eccd3, #8070da);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .navbar-burger span {
     border-radius: 16px !important;
     width: 23px !important;
     height: 3px !important;
-    color: #fff !important;
+    //color: #fff !important;
+    //background: linear-gradient(135deg, #5eccd3 0, #f8549e 60%, #8070da 100%);
+  }
+  .navbar-burger span:nth-child(1) {
+    background: #5eccd3;
+  }
+  .navbar-burger span:nth-child(2) {
+    background: #f8549e;
+  }
+  .navbar-burger span:nth-child(3) {
+    background: #8070da;
   }
 
   #navbarBasicExample {
@@ -21,18 +35,32 @@
 
   a.navbar-item,
   .navbar-link {
-    color: white;
+    color: #8070da;
     font-weight: bolder;
+    font-family: $FONT_MONTSERRAT;
+    font-weight: 300;
     &:hover {
-      color: #5eccd3;
+      //color: #5eccd3;
     }
   }
 
   .navbar-item {
     .buttons {
+      font-family: $FONT_MONTSERRAT;
       @media screen and (max-width: 768px) {
         justify-content: center;
       }
     }
+  }
+  .navbar-border-gradient {
+    background: linear-gradient(135deg, #5eccd3 0, #f8549e 60%, #8070da 100%);
+    height: .5rem;
+    width: 100%;
+    position: absolute;
+    top: 0;
+  }
+
+  .is-primary {
+    background: #5eccd3;
   }
 }

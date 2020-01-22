@@ -1,22 +1,26 @@
-<div class="container">
-  <div class="logo">
-    <img src="./images/logo_transparent.png" alt="logo daily baby" />
-  </div>
-  
-  <div class="form form-login">
+{{>header}}
+<div class="container section">  
+  <div class="form form-login" id="form">
+    <h2 class="title-form">Connection</h2>
     <form action="/login" method="post">
-      <p class="form-container">
-        <label class="label-container label-container--input">
-          <span>Email:</span>
-          <input type="text" name="email">
-        </label>
+      <p class="control has-icons-left has-icons-right">
+        <input class="input" type="text" name="email" placeholder="Email">
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i class="fas fa-check"></i>
+        </span>
       </p>
 
-      <p>
-        <label class="label-container label-container--input">
-          <span>Password:</span>
-          <input type="password" name="password">
-        </label>
+      <p class="control has-icons-left has-icons-right">
+        <input class="input" type="password" name="password" placeholder="Password">
+        <span class="icon is-small is-left">
+          <i class="fas fa-unlock"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i class="fas fa-check"></i>
+        </span>
       </p>
 
       {{#if errorMessage}}
@@ -24,10 +28,8 @@
       {{/if}}
       <button type="submit" class="button button-login is-rounded">Se connecter avec mon email</button>
      
-      <p class="text-center">OU</p>
 
-      <button type="submit" class="button button-login is-rounded">Se connecter avec GMAIL</button>
-    <a href="/signup"><p class="text-center">Inscrivez vous</p></a>
+    <p class="text-center">Pas encore de compte ?<a href="/signup"> Inscrivez vous</a></p>
 
     </form>
   </div>

@@ -1,4 +1,6 @@
 .daily-post {
+  position: relative;
+  z-index: 12;
   &__article {
     &-img {
       width: 700px;
@@ -20,7 +22,7 @@
     }
 
     &-text {
-        margin: 20px 10px;
+      margin: 20px 10px;
     }
   }
   &__slider {
