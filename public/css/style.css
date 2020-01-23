@@ -8050,7 +8050,8 @@ h1 {
 
 .card-view--container {
   display: flex;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  margin: 60px 0; }
 
 .card-view--wrapper {
   display: flex; }
@@ -8093,9 +8094,15 @@ h1 {
       position: relative;
       display: flex;
       flex-direction: column;
-      align-items: center; }
+      align-items: center;
+      z-index: 15;
+      color: #fff; }
       .daily-card__date--container .numb {
-        font-size: 50px; }
+        font-size: 20px;
+        bottom: 30px;
+        position: absolute;
+        width: 300px;
+        left: 0; }
       .daily-card__date--container .month {
         text-transform: uppercase;
         font-size: 15px; }
@@ -8125,37 +8132,70 @@ h1 {
     width: 150px;
     z-index: 10; }
 
+.list-card {
+  position: relative; }
+
+.chechbox-child {
+  position: relative; }
+
+.checkbox-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10; }
+  .checkbox-card ~ .card-manage {
+    transition: border 500ms ease-out; }
+  .checkbox-card:checked ~ .card-manage {
+    border: 1px solid #c1c1c1; }
+  .checkbox-card:checked:hover ~ .card-content {
+    border: 1px solid #c1c1c1; }
+
 .card-manage {
+  position: relative;
   display: flex;
-  flex-direction: column;
+  transition: all 100ms ease-out;
+  justify-content: baseline;
   border-radius: 5px;
-  width: 100%;
-  background-color: #eb524a; }
+  margin: 15px 0;
+  border: 1px solid #ccc3;
+  background: #fff;
+  justify-content: space-between;
+  box-shadow: aliceblue;
+  box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  cursor: pointer; }
+  .card-manage:hover {
+    border: 1px solid #c1c1c1; }
   .card-manage .content {
-    float: left;
-    width: 100%;
-    padding: 20px 30px 50px 30px;
+    padding: 20px;
     position: relative;
-    text-align: center; }
-    .card-manage .content img {
-      float: left;
-      width: 30%;
-      margin-right: 10%;
-      display: inline-block;
-      border-radius: 50%; }
-    .card-manage .content aside {
-      width: 60%;
-      float: left;
-      color: #ffffff;
-      margin-top: 10px; }
-      .card-manage .content aside h1 {
-        font-weight: 100;
-        font-size: 22px;
-        margin-bottom: 10px; }
-      .card-manage .content aside p {
-        font-size: 14px;
-        letter-spacing: .5px;
-        line-height: 160%; }
+    text-align: center;
+    margin: 0;
+    background: #f7f5f6; }
+    .card-manage .content .content-img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      position: relative;
+      overflow: hidden; }
+      .card-manage .content .content-img img {
+        max-width: 150% !important;
+        left: -8px;
+        position: absolute; }
+  .card-manage aside {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center; }
+    .card-manage aside h1 {
+      font-weight: 100;
+      font-size: 22px;
+      margin-bottom: 10px; }
+    .card-manage aside p {
+      font-size: 14px;
+      letter-spacing: .5px;
+      line-height: 160%; }
 
 .login-title-page {
   font-weight: 800; }
@@ -8272,6 +8312,11 @@ h1 {
     border: 2px solid #5dced3;
     margin-right: 10px; }
 
+.title-section {
+  font-family: "Montserrat", sans-serif !important;
+  text-transform: uppercase;
+  color: #5dced3; }
+
 .avatar {
   display: flex;
   justify-content: center;
@@ -8280,7 +8325,7 @@ h1 {
   align-items: center; }
   .avatar-baby-pic {
     border-radius: 50%;
-    border: 5px solid #fff;
+    border: 5px solid #5dced3;
     width: 150px;
     height: 150px;
     position: relative;
@@ -8474,6 +8519,19 @@ h1 {
       height: 15px;
       border-radius: 50%;
       background: #cbcbcb; }
+
+.new-article-container {
+  margin: 20px 0; }
+
+.add-note-title {
+  text-transform: uppercase;
+  font-weight: 500;
+  border-bottom: 2px solid; }
+
+.add-note-textarea {
+  margin-top: 50px;
+  width: 100%;
+  height: 100px; }
 
 .toggle {
   isolation: isolate;

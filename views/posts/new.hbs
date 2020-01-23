@@ -1,19 +1,34 @@
+{{>header}}
+ <div class="container section">
+ <div class="form form-signup" id="form">
+<h1 class="title-form">Editer la note du jour</h1>
 <form action="/posts/new" method="POST" enctype="multipart/form-data">
-  <p>
-    <label>
-      Content:
-      <textarea name="content"></textarea>
-    </label>
-  </p>
 
-  <p>
+  <article class="daily-post__article">
+    <div class="daily-post__article-img">
+    </div>
+    <div class="daily-post__slider">
+      <span class="daily-post__slider-button"></span>
+    </div>
     <label>
-      Picture:
+      Une petite photo ? :
       <input type="file" name="pic">
     </label>
-  </p>
+    
+    <div class="new-article-container">
+    
 
-  <p>
-    <button>Create new post</button>
-  </p>
+    <p class="add-note-title">Ajouter une note</p>
+    <div class="add-note-textarea-container">
+        <textarea name="content" class="add-note-textarea"></textarea>
+    
+  </div>
+  </div>
+  </article>
+<br>
+
+  <button type="submit" class="button button-login is-rounded">Créer la note</button>
+
 </form>
+</div>
+</div>

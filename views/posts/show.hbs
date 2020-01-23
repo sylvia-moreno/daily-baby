@@ -1,4 +1,3 @@
- <div class="background-degrade"></div>
 {{> header}}
 <div class="daily-post section">
    <div class="today-date today-date--post"><span>{{todayDate}}</span></div>
@@ -14,8 +13,8 @@
       <p class="daily-post__article-text--commentaire">{{post.content}}</p>
     </div>
   </article>
-
-  <h2>Comments</h2>
+<br>
+  <h2 class="daily-post__article-title">Vos échanges</h2>
   <ul>
     {{#each post.comments}}
     <li>
@@ -27,24 +26,22 @@
     </li>
     {{/each}}
   </ul>
-
+<br>
   {{#if user}}
-  <h2>New comment</h2>
+  <h2 class="daily-post__article-title">Ajouter un message</h2>
   <form action="/posts/{{post.id}}/comments" method="POST" enctype="multipart/form-data">
-    <p>
-      <label>
-        Content:
-        <textarea name="content"></textarea>
-      </label>
-    </p>
-    <p>
-      <label>
-        Image:
-        <input type="file" name="image">
-      </label>
-    </p>
+    <div class="add-note-textarea-container">
+        <textarea name="content" class="add-note-textarea"></textarea>
+    
+  </div>
 
-    <button>Comment</button>
+    <label>
+      Une petite photo ? :
+      <input type="file" name="image">
+    </label>
+
+      <button type="submit" class="button button-login is-rounded">Ajouter mon commentaire</button>
+
   </form>
   {{/if}}
 </div>

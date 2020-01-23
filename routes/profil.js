@@ -7,56 +7,101 @@ const User = require("../models/user.js");
 
 
 //Page profil
-router.get("/profil", (req, res) => {
+router.get("/profil", async (req, res)  => {
   const childrensID = req.user.myChildren;
   const userChild = {};
-  //childrensID.map(child => {
-    
-    //const id = new mongoose.Types.ObjectId(child);
+//  debugger
     if(!!childrensID) {
-      //User.find({ '_.id': { $in: childrensID.map(child => new mongoose.Types.ObjectId(child)) }})
-      User.findOne({_id: req.user.myChildren})
-      .then(baby => {  
+      debugger
+      
+      // console.log('nurseUser: ', nurseUser)
+      
+      User.find({_id: req.user.myChildren})
+      //.populate('myChildren')
+      .then((babies) => {  
         debugger
-        if(!baby) {
+        if(!babies) {
           res.render("profil/profil", {
             user: req.user,
             message: req.flash("error"),
           });
         }
 
-        if(!!baby) {
+        if(!!babies) {
           res.render("profil/profil", {
             user: req.user,
             message: req.flash("error"),
-            babyname: baby.username
+            babies: babies,
           });
         }
   
       })
       .catch(err => next(err))
       
-    };
 
-    res.render("profil/profil", {
-      user: req.user,
-      message: req.flash("error"),
-    });
-    
-    console.log('userChild: ', userChild);
-  //});
-  
-  
+      // User.find({isNurse: true})
+      //     .then(nurse => {
+      //         debugger
+      //         console.log('nurseUser: ', nurse)
+      //     })
+      //     .catch(err => next(err))
+    };
 });
 
+
 //Ajouter un bb
+router.get("/add-baby", async (req, res)  => {
+  const childrensID = req.user.myChildren;
+  const userChild = {};
+//  debugger
+    if(!!childrensID) {
+      debugger
+      
+      // console.log('nurseUser: ', nurseUser)
+      
+      User.find({_id: req.user.myChildren})
+      //.populate('myChildren')
+      .then((babies) => {  
+        debugger
+        if(!babies) {
+          res.render("profil/add-baby", {
+            user: req.user,
+            message: req.flash("error"),
+          });
+        }
+
+        if(!!babies) {
+          res.render("profil/add-baby", {
+            user: req.user,
+            message: req.flash("error"),
+            babies: babies,
+          });
+        }
+  
+      })
+      .catch(err => next(err))
+      
+
+      // User.find({isNurse: true})
+      //     .then(nurse => {
+      //         debugger
+      //         console.log('nurseUser: ', nurse)
+      //     })
+      //     .catch(err => next(err))
+    };
+});
 router.post("/add-baby", uploadCloud.single("photo"), (req, res, next) => {
   const username = req.body.babyname;
+  const age = req.body.babyage;
   const role = "baby";
+  const avatar = req.file ? req.file.url : '<img src="https://img.icons8.com/ios/50/000000/day-care.png">';
+
 
   const newBaby = new User({
     username,
     role,
+    age,
+    avatar,
     isParent: false,
     isNurse: false
   });
@@ -80,33 +125,38 @@ router.post("/add-baby", uploadCloud.single("photo"), (req, res, next) => {
 });
 
 //Mise à jour de profil
+router.get("/update", (req, res)  => {
+  res.render("profil/update", {
+    user: req.user
+  });
+});
+
 router.post("/update", uploadCloud.single("photo"), (req, res, next) => {
   const username = !!req.body.username;
   const password = !!req.body.password;
   const avatar = req.file ? req.file.url : "";
   const email = !!req.body.email;
-  const role = req.body.role;
-  let isParent;
-  let isNurse;
+  // const role = req.body.role;
+  // let isParent;
+  // let isNurse;
 
-  if (req.body.role === "parent") {
-    isParent = true;
-    isNurse = false;
-    //parentname = username;
-  } else if (req.body.role === "nurse") {
-    isParent = false;
-    isNurse = true;
-    //nursame = username;
-  }
+  // if (req.body.role === "parent") {
+  //   isParent = true;
+  //   isNurse = false;
+  //   //parentname = username;
+  // } else if (req.body.role === "nurse") {
+  //   isParent = false;
+  //   isNurse = true;
+  //   //nursame = username;
+  // }
 
   const updateInfos = {
     username,
     password,
     avatar,
     email,
-    role,
-    isNurse,
-    isParent
+    // isNurse,
+    // isParent
   };
 
   User.findByIdAndUpdate(req.user._id, {
@@ -115,15 +165,67 @@ router.post("/update", uploadCloud.single("photo"), (req, res, next) => {
       email: email,
       password: password,
       avatar: avatar,
-      role: role,
-      isParent,
-      isNurse
+      // role: role,
+      // isParent,
+      // isNurse
     }
   });
 });
 
 //Gestion de la garde : lié un bb à une nounou
+router.get("/manage", async (req, res)  => {
+  debugger
+  const childrensID = req.user.myChildren;
+  const nurses = [];
+
+debugger; 
+
+  if(!!childrensID) {
+    
+    
+    User.find({role: 'nurse'})
+        .then(nurses => {
+          return nurses = nurses;
+        })
+
+    User.find({_id: req.user.myChildren})
+        //.populate('myChildren')
+        .then((babies) => {  
+          if(!babies) {
+            res.render("profil/manage", {
+              user: req.user,
+              message: req.flash("error"),
+            });
+          }
+
+      if(!!babies) {
+        res.render("profil/manage", {
+          user: req.user,
+          message: req.flash("error"),
+          babies: babies,
+          nurses: nurses,
+        });
+      }
+
+      
+
+      
+
+    })
+    .catch(err => next(err))
+    
+    // User.find({isNurse: true})
+    //     .then(nurse => {
+    //         debugger
+    //         console.log('nurseUser: ', nurse)
+    //     })
+    //     .catch(err => next(err))
+  };
+})
 router.post("/manage", uploadCloud.single("photo"), (req, res, next) => {
-   
+  debugger;
+   const nurse = req.body.checkboxnurse;
+   const baby = req.body.checkboxchild;
+
 })
 module.exports = router;

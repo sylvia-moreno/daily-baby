@@ -10,6 +10,7 @@ const UserSchema = Schema({
     type: String,
     enum: ["baby", "nurse", "parent"]
   },
+  age: String,
   contrats: [
     {
       type: Schema.Types.ObjectId,
@@ -24,13 +25,14 @@ const UserSchema = Schema({
   //     age: String,
   //   }
   // ],
-  myChildren: 
+  myChildren: [
     {
       type: Schema.Types.ObjectId,
       ref: 'User',
       name: String,
       age: String,
     }
+  ]
   ,
   isNurse: Boolean,
   isParent: Boolean,

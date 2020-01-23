@@ -39,7 +39,9 @@ router.post("/new", uploadCloud.single("pic"), function(req, res, next) {
       creationDate: format(new Date(), "yyyy-MM-dd")
     }
   })
-    .then(post => res.redirect("/"))
+    .then(post => res.redirect("/"), {
+      date: format(created, "yyyy-MM-dd")
+    })
     .catch(next);
 });
 

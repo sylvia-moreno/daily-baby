@@ -1,0 +1,71 @@
+ {{>header}}
+ <br>
+  <br>
+ <div class="tabs is-centered">
+  <ul>
+    <li class="is-active"><a>Mes enfants</a></li>
+    <li><a href="/add-baby">Ajouter un enfant</a></li>
+    <li><a href="/update">Mise à jour de vos infos</a></li>
+    <li><a href="/manage">Gérer la garde</a></li>
+  </ul>
+</div>
+<br>
+ <div class="container section">
+ <div class="form form-signup" id="form">
+<h1 class="title-form">Gérer la garde</h1>
+    <div class="form form-signup" id="form">
+      <form action="/manage" method="post" enctype="multipart/form-data">
+        <p>Si vous souhaitez trouver/changer de nounou</p>
+  
+        <p class="title-section">Sélectionner le bébé à garder : </p>
+        <ul>
+        {{#each babies}}
+          <li>
+            <div class="chechbox-child">
+              <input class="checkbox-card" type="checkbox" name="checkboxchild" value=`{{this.username}}_{{this.role}}` checked>
+              <div class="card-manage">
+                {{#if this.avatar}}
+                <div class="content">
+                  <div class="content-img">
+                    <img src="{{this.avatar}}" alt="img bb">
+                  </div>
+                </div>
+                {{/if}}
+                <aside>
+                  <h1>{{this.username}}</h1>
+                  <p class="card-user--age">{{this.age}}</p>
+                </aside>
+              </div>
+            </div>
+          </li>
+        {{/each}}
+       </ul>
+<br>
+         <p class="title-section">Et choissiez parmis les nounous disponibles : </p>
+        <ul class="form-manage form-manage--nurses">
+          {{nurses}}
+          {{#each nurses}}
+          <li>
+            <div class="chechbox-child">
+              <input class="checkbox-card" type="checkbox" name="checkboxnurse" value=`{{this.username}}_{{this.role}}` checked>
+              <div class="card-manage">
+                {{#if this.avatar}}
+                <div class="content">
+                  <div class="content-img">
+                    <img src="{{this.avatar}}" alt=`'img'_{{this.role}}`>
+                  </div>
+                </div>
+                {{/if}}
+                <aside>
+                  <h1>{{this.username}}</h1>
+                </aside>
+              </div>
+            </div>
+          </li>
+          {{/each}}
+        </ul>
+        <button type="submit" class="button button-login is-rounded">Valider la garde</button>
+      </form>
+    </div>
+    </div>
+    </div>

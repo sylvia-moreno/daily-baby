@@ -66,7 +66,9 @@ passport.use(new LocalStrategy(
     const {email, password} = req.body;
 
     User.findOne({email})
+        .populate('myChildren')
       .then(user => {
+        console.log('user :', user)
         if (!user) {
           return done(null, false, { message: "Le nom d'utilisateur n'est pas correcte." });
         }
@@ -86,10 +88,17 @@ const index = require('./routes/index');
 const authRoutes = require('./routes/authentication');
 const postsRoutes = require('./routes/posts');
 const profilRoute = require('./routes/profil');
+const addBabyRoute = require('./routes/profil');
+const updateRoute = require('./routes/profil');
+const manageRoute = require('./routes/profil');
+
 
 app.use('/', index);
 app.use('/', authRoutes);
 app.use('/posts', postsRoutes);
+app.use('/add-baby', addBabyRoute);
+app.use('/update', updateRoute);
+app.use('/manage', addBabyRoute);
 app.use('/', profilRoute);
 
 

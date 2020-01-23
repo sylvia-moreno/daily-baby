@@ -1,6 +1,7 @@
 .card-view--container {
   display: flex;
   overflow-y: scroll;
+  margin: 60px 0
 }
 
 .card-view--wrapper {
@@ -9,7 +10,7 @@
 
 .daily-card {
   position: relative;
- // background-image: url("/images/pixel-heart.png");
+  // background-image: url("/images/pixel-heart.png");
   //background-repeat: repeat;
   height: 450px;
   margin: 15px 20px;
@@ -31,11 +32,11 @@
     transition: opacity .25s;
     border-radius: 16px;
   }
-
+  
   &:first-child {
     // transform: translateX(30px);
   }
-
+  
   &-img {
     position: absolute;
     height: 447px;
@@ -50,15 +51,21 @@
     bottom: 20px;
     left: 20px;
     font-family: "Didact Gothic", sans-serif;
-
+    
     &--container {
       position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
-
+      z-index: 15;
+      color: #fff;
+      
       .numb {
-        font-size: 50px;
+        font-size: 20px;
+        bottom: 30px;
+        position: absolute;
+        width: 300px;
+        left: 0;
       }
       .month {
         text-transform: uppercase;
@@ -66,7 +73,7 @@
       }
     }
   }
-
+  
   &__edit {
     a {
       position: absolute;
@@ -79,15 +86,15 @@
       z-index: 10;
       .fa-pen {
         width: 15px;
-    height: 15px;
-    color: #ffffffbf;
-    left: 18px;
-    position: absolute;
-    top: 18px;
+        height: 15px;
+        color: #ffffffbf;
+        left: 18px;
+        position: absolute;
+        top: 18px;
       }
     }
   }
-
+  
   .new-card {
     font-family: "Montserrat", sans-serif !important;
     color: #fff;
@@ -101,40 +108,85 @@
 }
 
 /// Profil card
+.list-card {
+  position: relative;
+}
+.chechbox-child {
+  position: relative;
+}
+.checkbox-card {
+  position: absolute; 
+  top:0; 
+  left:0; 
+  //opacity:0;
+  z-index: 10; 
+  //visibility:hidden;
+  ~ .card-manage {
+    transition : border 500ms ease-out;
+  }
+  
+  &:checked ~ .card-manage{
+    border: 1px solid #c1c1c1;
+  }
+
+  &:checked:hover ~ .card-content{
+    border: 1px solid #c1c1c1;
+  }
+}
 .card-manage {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  border-radius: 5px;
-  width: 100%;
-  background-color: #eb524a;
-  .content {
-      float: left;
-      width: 100%;
-      padding: 20px 30px 50px 30px;
-      position: relative;
-      text-align: center;
-      img {
-        float: left;
-        width: 30%;
-        margin-right: 10%;
-        display: inline-block;
-        border-radius: 50%;
+  transition : all 100ms ease-out;
+    justify-content: baseline;
+    border-radius: 5px;
+    margin: 15px 0;
+    border: 1px solid #ccc3;
+    background: #fff;
+    justify-content: space-between;
+    box-shadow: aliceblue;
+    box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    cursor:pointer;
+    &:hover {
+      border: 1px solid #c1c1c1;
     }
-    aside {
-      width: 60%;
-      float: left;
-      color: #ffffff;
-      margin-top: 10px;
-      h1 {
-        font-weight: 100;
-    font-size: 22px;
-    margin-bottom: 10px;
-      }
-      p {
-        font-size: 14px;
-    letter-spacing: .5px;
-    line-height: 160%;
+  
+  .content {
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    margin: 0;
+    background: #f7f5f6;
+    .content-img{
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      position: relative;
+      overflow: hidden;
+      img {
+        max-width: 150% !important;
+        left: -8px;
+        position: absolute;
       }
     }
   }
+    aside {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      h1 {
+        font-weight: 100;
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+      p {
+        font-size: 14px;
+        letter-spacing: .5px;
+        line-height: 160%;
+      }
+    }
+  
 }
+
