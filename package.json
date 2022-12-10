@@ -14,7 +14,7 @@
   "dependencies": {
     "babel": "^6.23.0",
     "bcrypt": "^3.0.7",
-    "body-parser": "~1.15.2",
+    "body-parser": "~1.20.1",
     "bulma": "^0.8.0",
     "cloudinary": "^1.18.1",
     "connect-flash": "^0.1.1",
@@ -23,7 +23,7 @@
     "date-fns": "^2.9.0",
     "debug": "~2.2.0",
     "dotenv": "^8.2.0",
-    "express": "~4.14.0",
+    "express": "~4.18.2",
     "express-session": "^1.15.1",
     "extract-text-webpack-plugin": "^4.0.0-alpha.0",
     "hbs": "^4.0.1",
